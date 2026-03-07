@@ -14,6 +14,8 @@ connectDB()
     });
     app.listen(PORT, () => {
       console.log(`\n⚙️  Server is listening at port: ${PORT}`);
+
+      console.log(`\nApi Documentation at http://localhost:8000/api-docs`);
     });
   })
   .catch((error) => {
