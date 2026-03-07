@@ -20,34 +20,43 @@ A robust, production-ready RESTful API for managing anime titles and user review
 ## 💻 Local Setup & Installation
 
 **1. Clone the repository**
+
 ```bash
-git clone <your-repo-url>
-cd <your-folder-name>
+git clone https://github.com/premanshtripathi/anime-review-api.git
+cd anime-review-api
 ```
+
 ---
+
 **2. Install Dependencies**
+
 ```bash
 npm install
 ```
+
 ---
 
 **3. Set up Environment Variables:**
 Follow .env.sample to setup your environment variables in .env file in root folder
 
 ---
+
 **4. Seed the Database (Highly Recommended):**
 
 To test the API effectively, you need initial data.
 
 **Note:** Ensure you have started the server and registered at least one user via Postman (POST /api/v1/users/register) before running this script.
+
 ```bash
 node seed.js
 ```
+
 ---
 
 **5. Start the Server**
 
 Run the application in development mode (uses nodemon):
+
 ```bash
 npm run dev
 ```
@@ -55,7 +64,6 @@ npm run dev
 If successful, you will see ⚙️ Server is running at port : 8000 in your terminal!
 
 ---
-
 
 # 📚 API Documentation
 
@@ -65,36 +73,39 @@ Base URL: `http://localhost:8000/api/v1` (or your configured port/domain)
 
 ## 👤 1. User Authentication
 
-| Method | Endpoint | Description | Request Body | Auth Required |
-| :--- | :--- | :--- | :--- | :---: |
-| `POST` | `/users/register` | Register a new user | `{ "fullname": "...", "username": "...", "email": "...", "password": "..." }` | ❌ |
-| `POST` | `/users/login` | Login and get access/refresh tokens | `{ "email": "...", "password": "..." }` | ❌ |
+| Method | Endpoint          | Description                         | Request Body                                                                  | Auth Required |
+| :----- | :---------------- | :---------------------------------- | :---------------------------------------------------------------------------- | :-----------: |
+| `POST` | `/users/register` | Register a new user                 | `{ "fullname": "...", "username": "...", "email": "...", "password": "..." }` |      ❌       |
+| `POST` | `/users/login`    | Login and get access/refresh tokens | `{ "email": "...", "password": "..." }`                                       |      ❌       |
 
 ---
 
 ## 🎬 2. Anime Operations
 
-| Method | Endpoint | Description | Query Parameters | Auth Required |
-| :--- | :--- | :--- | :--- | :---: |
-| `GET` | `/anime` | Fetch all animes with pagination, search, and sorting | `page` (default: 1)<br>`limit` (default: 10)<br>`query` (e.g., "solo")<br>`sortBy` (e.g., "title")<br>`sortType` ("asc" or "desc") | ❌ |
-| `GET` | `/anime/:animeId` | Fetch details of a single anime by its MongoDB ID | None | ❌ |
+| Method | Endpoint          | Description                                           | Query Parameters                                                                                                                   | Auth Required |
+| :----- | :---------------- | :---------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------- | :-----------: |
+| `GET`  | `/anime`          | Fetch all animes with pagination, search, and sorting | `page` (default: 1)<br>`limit` (default: 10)<br>`query` (e.g., "solo")<br>`sortBy` (e.g., "title")<br>`sortType` ("asc" or "desc") |      ❌       |
+| `GET`  | `/anime/:animeId` | Fetch details of a single anime by its MongoDB ID     | None                                                                                                                               |      ❌       |
 
 ---
 
 ## ⭐ 3. Review Operations
 
-| Method | Endpoint | Description | Request Body / Parameters | Auth Required |
-| :--- | :--- | :--- | :--- | :---: |
-| `GET` | `/reviews/anime/:animeId` | Get paginated reviews for a specific anime | **Query:** `page`, `limit`<br>**Params:** `animeId` | ❌ |
-| `POST` | `/reviews/anime/:animeId` | Add a new review to an anime | **Params:** `animeId`<br>**Body:** `{ "rating": 9, "comment": "Amazing!" }` | ✅ 🔐 |
-| `PATCH`| `/reviews/:reviewId` | Partially update an existing review | **Params:** `reviewId`<br>**Body:** `{ "rating": 10 }` *(Send only what needs updating)* | ✅ 🔐 |
-| `DELETE`| `/reviews/:reviewId` | Delete a review | **Params:** `reviewId` | ✅ 🔐 |
+| Method   | Endpoint                  | Description                                | Request Body / Parameters                                                                | Auth Required |
+| :------- | :------------------------ | :----------------------------------------- | :--------------------------------------------------------------------------------------- | :-----------: |
+| `GET`    | `/reviews/anime/:animeId` | Get paginated reviews for a specific anime | **Query:** `page`, `limit`<br>**Params:** `animeId`                                      |      ❌       |
+| `POST`   | `/reviews/anime/:animeId` | Add a new review to an anime               | **Params:** `animeId`<br>**Body:** `{ "rating": 9, "comment": "Amazing!" }`              |     ✅ 🔐     |
+| `PATCH`  | `/reviews/:reviewId`      | Partially update an existing review        | **Params:** `reviewId`<br>**Body:** `{ "rating": 10 }` _(Send only what needs updating)_ |     ✅ 🔐     |
+| `DELETE` | `/reviews/:reviewId`      | Delete a review                            | **Params:** `reviewId`                                                                   |     ✅ 🔐     |
 
 ---
 
 ## 🔐 Authentication Details
+
 For protected routes (marked with ✅ 🔐), you must include the JWT Access Token in the request headers:
 
 **Header Format:**
+
 ```http
 Authorization: Bearer <YOUR_ACCESS_TOKEN>
+```
