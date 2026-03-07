@@ -1,0 +1,423 @@
+{
+  "info": {
+    "_postman_id": "a3a5083c-f7e1-441a-9c55-a064c082b0f0",
+    "name": "anime-review-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48963401",
+    "_collection_link": "https://go.postman.co/collection/48963401-a3a5083c-f7e1-441a-9c55-a064c082b0f0?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "anime",
+      "item": [
+        {
+          "name": "getAllAnime",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/anime?page=1&limit=10&query=gintama",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "anime"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "query",
+                  "value": "gintama"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAnimeById",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/anime/:animeId",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "anime",
+                ":animeId"
+              ],
+              "variable": [
+                {
+                  "key": "animeId",
+                  "value": "69aba53c112b0ca7514d9c36"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "fullname",
+                  "value": "demo account",
+                  "type": "text",
+                  "uuid": "271bc954-d2ac-4c1a-91e8-c61489b3765f"
+                },
+                {
+                  "key": "username",
+                  "value": "demousername",
+                  "type": "text",
+                  "uuid": "ba8c2dbd-fe00-46b2-936b-90387b6b718e"
+                },
+                {
+                  "key": "email",
+                  "value": "demo@demo.com",
+                  "type": "text",
+                  "uuid": "b0858f3d-b9a7-4018-9d8c-6d15a09b15ab"
+                },
+                {
+                  "key": "password",
+                  "value": "demo1234",
+                  "type": "text",
+                  "uuid": "dfeb6e50-7c8f-4542-bd5d-d7a372375e08"
+                },
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "uuid": "752b2363-4b17-458d-acc9-4ae58b07cf4e",
+                  "src": "postman-cloud:///1f0ffb32-134c-4260-9355-2f78ccc48924"
+                },
+                {
+                  "key": "coverImage",
+                  "type": "file",
+                  "uuid": "dcff2f71-381e-4f65-8eb5-8857a66cbda4",
+                  "src": "postman-cloud:///1f0ffb32-391c-4530-b6af-ae13e52b09fc"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{server}}/users/register",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"demo@demo.com\",\r\n    \"password\": \"demo1234\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server}}/users/login",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "logout",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server}}/users/logout",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "refresh-access-token",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{server}}/users/refresh-access-token",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "refresh-access-token"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "change-password",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"oldPassword\": \"demo1234\",\r\n    \"newPassword\": \"demo1234\",\r\n    \"confirmPassword\": \"demo1234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server}}/users/change-password",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "change-password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "current-user",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/users/current-user",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "current-user"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update-account-details",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"fullname\": \"demo account\",\r\n    \"email\": \"demo@demo.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server}}/users/update-account-details",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "users",
+                "update-account-details"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "reviews",
+      "item": [
+        {
+          "name": "getAnimeReviews",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/reviews/anime/:animeId?page=1&limit=10",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "reviews",
+                "anime",
+                ":animeId"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "animeId",
+                  "value": "69aba53c112b0ca7514d9c36"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "addReview",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"rating\": 9,\r\n    \"comment\": \"Peak fiction!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server}}/reviews/anime/:animeId",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "reviews",
+                "anime",
+                ":animeId"
+              ],
+              "variable": [
+                {
+                  "key": "animeId",
+                  "value": "69aba53c112b0ca7514d9c36"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "updateReview",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"rating\": 10,\r\n    \"comment\": \"Changed my mind, absolutely insane animation!\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{server}}/reviews/:reviewId",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "reviews",
+                ":reviewId"
+              ],
+              "variable": [
+                {
+                  "key": "reviewId",
+                  "value": "69aba8cd3a135106b281c555"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteReview",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{server}}/reviews/:reviewId",
+              "host": [
+                "{{server}}"
+              ],
+              "path": [
+                "reviews",
+                ":reviewId"
+              ],
+              "variable": [
+                {
+                  "key": "reviewId",
+                  "value": "69aba8cd3a135106b281c555"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
