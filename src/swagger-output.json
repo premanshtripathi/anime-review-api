@@ -7,7 +7,7 @@
   },
   "host": "anime-review-api-0116.onrender.com", 
   "basePath": "/",
-  "schemes": ["http", "https"],
+  "schemes": ["https"],
   "securityDefinitions": {
     "bearerAuth": {
       "type": "apiKey",
