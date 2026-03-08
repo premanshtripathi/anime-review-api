@@ -5,12 +5,9 @@
     "description": "API documentation for VyomRealm / Anime Project",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "https://anime-review-api-0116.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "http",
-    "https"
-  ],
+  "schemes": ["http", "https"],
   "securityDefinitions": {
     "bearerAuth": {
       "type": "apiKey",
